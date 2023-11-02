@@ -15,12 +15,12 @@ function HomePage() {
   const isMobile = window.innerWidth < 640;
   const isTablette = window.innerWidth < 1024;
   let nombreShow = 9;
-
   if (isMobile) {
     nombreShow = 4;
   } else if (isTablette) {
     nombreShow = 6;
   }
+
   useEffect(() => {
     const fetchRecentGames = async () => {
       try {
@@ -31,11 +31,9 @@ function HomePage() {
         console.error(error);
       }
     };
-
     fetchRecentGames();
-  }, [nombreShow]); // Le tableau vide [] signifie que cet effet s'exécutera une seule fois après le montage
-
-  console.log(recentGames);
+  }, [nombreShow]);
+  
   const listItems = recentGames.map((game) => (
     <Card key={game.id} data={game} />
   ));
