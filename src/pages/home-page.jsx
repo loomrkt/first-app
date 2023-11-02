@@ -11,11 +11,20 @@ const serviceRAWG = new ServiceRAWG();
 function HomePage() {
   const [recentGames, setRecentGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  // choix de nombre de donnée
+  const isMobile = window.innerWidth < 640;
+  const isTablette = window.innerWidth < 1024;
+  let nombreShow = 9;
 
+  if (isMobile) {
+    nombreShow = 4;
+  } else if (isTablette) {
+    nombreShow = 6;
+  }
   useEffect(() => {
     const fetchRecentGames = async () => {
       try {
-        const games = await serviceRAWG.recentGame();
+        const games = await serviceRAWG.recentGame(nombreShow);
         setLoading(false);
         setRecentGames(games);
       } catch (error) {
@@ -24,21 +33,10 @@ function HomePage() {
     };
 
     fetchRecentGames();
-  }, []); // Le tableau vide [] signifie que cet effet s'exécutera une seule fois après le montage
+  }, [nombreShow]); // Le tableau vide [] signifie que cet effet s'exécutera une seule fois après le montage
 
-  const isMobile = window.innerWidth < 640; // Vous pouvez ajuster la valeur selon vos besoins
-  const isTablette = window.innerWidth < 1024; // Vous pouvez ajuster la valeur selon vos besoins
-  let recentGamesToShow = recentGames;
-  let nombreShow = 9;
-
-  if (isMobile) {
-    nombreShow = 4;
-  } else if (isTablette) {
-    nombreShow = 6;
-  }
-  recentGamesToShow = recentGames.slice(0, nombreShow);
-
-  const listItems = recentGamesToShow.map((game) => (
+  console.log(recentGames);
+  const listItems = recentGames.map((game) => (
     <Card key={game.id} data={game} />
   ));
 

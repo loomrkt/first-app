@@ -14,7 +14,7 @@ class ServiceRAWG {
     return data;
   };
 
-  recentGame = async () => {
+  recentGame = async (nombre) => {
     const today = new Date();
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(today.getDate() - 30);
@@ -23,7 +23,7 @@ class ServiceRAWG {
     const formattedThirtyDaysAgo = thirtyDaysAgo.toISOString().split("T")[0];
 
     const res = await fetch(
-      `${BASE_URL}games?key=${environement.RAWG}&dates=${formattedThirtyDaysAgo},${formattedToday}&ordering=-rating&page_size=9`
+      `${BASE_URL}games?key=${environement.RAWG}&dates=${formattedThirtyDaysAgo},${formattedToday}&ordering=-rating&page_size=${nombre}`
     );
     if (!res.ok) {
       throw new Error("failed to fetch");
