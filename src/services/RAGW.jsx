@@ -31,6 +31,16 @@ class ServiceRAWG {
     const data = await res.json();
     return data.results;
   };
+  allGame = async (ordering, nombre, search) => {
+    const res = await fetch(
+      `${BASE_URL}games?key=${environement.RAWG}&ordering=-${ordering}&page_size=${nombre}&dates=1969-12-31,2029-12-31&search=${search}`
+    );
+    if (!res.ok) {
+      throw new Error("failed to fetch");
+    }
+    const data = await res.json();
+    return data.results;
+  };
 }
 
 export default ServiceRAWG;

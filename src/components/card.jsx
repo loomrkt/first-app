@@ -11,7 +11,7 @@ function Card({ data }) {
   return (
     <div className="group flex flex-col h-full bg-white border border-gray-200 shadow-md dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
       <div
-        className="h-52 flex flex-col justify-center items-cente rounded-t-xl"
+        className="h-52 flex flex-col justify-center items-cente rounded-t-xl overflow-hidden "
         style={{ backgroundColor: `#${data.dominant_color}` }}
       >
         <img src={data.background_image} alt="" />

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
+  let location = useLocation();
   return (
     <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full  text-sm py-4">
       <nav
@@ -95,25 +97,44 @@ function Navbar() {
           <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
             <Link
               to={"/"}
-              className="font-medium text-blue-500"
-              aria-current="page"
+              className={
+                location.pathname == "/"
+                  ? "font-medium text-blue-600"
+                  : "font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+              }
+              aria-current={location.pathname == "/" ? "page" : undefined}
             >
               Accueil
             </Link>
             <Link
               to={"/jeux"}
-              className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+              className={
+                location.pathname == "/jeux"
+                  ? "font-medium text-blue-600"
+                  : "font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+              }
+              aria-current={location.pathname == "/jeux" ? "page" : undefined}
             >
               Jeux
             </Link>
             <Link
-              className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+              className={
+                location.pathname == "/autre"
+                  ? "font-medium text-blue-600"
+                  : "font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+              }
+              aria-current={location.pathname == "/autre" ? "page" : undefined}
               to={"/"}
             >
               Work
             </Link>
             <Link
-              className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+              className={
+                location.pathname == "/autre"
+                  ? "font-medium text-blue-600"
+                  : "font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+              }
+              aria-current={location.pathname == "/autre" ? "page" : undefined}
               to={"/"}
             >
               Blog
