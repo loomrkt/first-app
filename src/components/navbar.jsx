@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
     <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full  text-sm py-4">
@@ -6,9 +8,9 @@ function Navbar() {
         aria-label="Global"
       >
         <div className="flex items-center justify-between">
-          <a
+          <Link
             className="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white"
-            href="#"
+            to={"/"}
           >
             <img
               className="w-10 h-auto"
@@ -16,14 +18,14 @@ function Navbar() {
               alt="Logo"
             />
             ConsoleConnection
-          </a>
+          </Link>
           <div className="sm:hidden">
             <button
               type="button"
               className="hs-collapse-toggle p-2 me-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
             >
               <a
-                className="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+                className="hs-dark-mode-active:hidden block hs-dark-mode group items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
                 href="#!"
                 data-hs-theme-click-value="dark"
               >
@@ -39,7 +41,7 @@ function Navbar() {
                 </svg>
               </a>
               <a
-                className="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+                className="hs-dark-mode-active:block hidden hs-dark-mode group items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
                 href="#!"
                 data-hs-theme-click-value="light"
               >
@@ -91,34 +93,34 @@ function Navbar() {
           className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
         >
           <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-            <a
+            <Link
+              to={"/"}
               className="font-medium text-blue-500"
-              href="#"
               aria-current="page"
             >
               Accueil
-            </a>
-            <a
+            </Link>
+            <Link
+              to={"/jeux"}
               className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
             >
-              Account
-            </a>
-            <a
+              Jeux
+            </Link>
+            <Link
               className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
+              to={"/"}
             >
               Work
-            </a>
-            <a
+            </Link>
+            <Link
               className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
+              to={"/"}
             >
               Blog
-            </a>
+            </Link>
             <div className="hidden sm:inline-block ">
               <a
-                className="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+                className="hs-dark-mode-active:hidden block hs-dark-mode group  items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
                 href="#!"
                 data-hs-theme-click-value="dark"
               >
@@ -134,7 +136,7 @@ function Navbar() {
                 </svg>
               </a>
               <a
-                className="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+                className="hs-dark-mode-active:block hidden hs-dark-mode group  items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
                 href="#!"
                 data-hs-theme-click-value="light"
               >
