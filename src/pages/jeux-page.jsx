@@ -3,29 +3,32 @@ import Card from "../components/card";
 import CardSkeleton from "../components/skeletons/card-skeleton";
 import DropDownFiltre from "../components/dropDownFiltre";
 import { useState, useEffect } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 const serviceRAWG = new ServiceRAWG();
 
 function JeuxPage() {
   const [Games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState("rating");
+  const [order, setOrder] = useState("");
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  // window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     const fetchGames = async () => {
       try {
-        const games = await serviceRAWG.allGame(order, 10, search);
-        setGames(games);
+        const newGames = await serviceRAWG.allGame(order, page, search);
+        setGames((prevGames) => [...prevGames, ...newGames]);
         setLoading(false);
       } catch (error) {
         console.error(error);
       }
     };
     fetchGames();
-  }, [order, search]);
+  }, [order, search, page]);
 
   const listItems = Games.map((game) => <Card key={game.id} data={game} />);
+  console.log(listItems);
   return (
     <div className="container mx-auto px-4">
       {/* search component and filtre*/}
@@ -134,10 +137,30 @@ function JeuxPage() {
         </div>
       </div>
       {/* affichage des jeux */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {loading && <CardSkeleton nombre={10} />}
-        {listItems}
-      </div>
+      <InfiniteScroll
+        dataLength={Games.length}
+        next={() => {
+          console.log("hello");
+          setPage(page + 1);
+        }}
+        loader={
+          <div className="flex items-center justify-center p-10">
+            <div
+              className="animate-spin inline-block w-10 h-10 border-[3px] border-current border-t-transparent text-gray-400 rounded-full"
+              role="status"
+              aria-label="loading"
+            >
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+        }
+        hasMore={true}
+      >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {loading && <CardSkeleton nombre={10} />}
+          {listItems}
+        </div>
+      </InfiniteScroll>
     </div>
   );
 }
