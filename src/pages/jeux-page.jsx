@@ -2,7 +2,6 @@ import ServiceRAWG from "../services/RAGW";
 import Card from "../components/card";
 import CardSkeleton from "../components/skeletons/card-skeleton";
 import DropDownFiltre from "../components/dropDownFiltre";
-
 import { useState, useEffect } from "react";
 const serviceRAWG = new ServiceRAWG();
 
@@ -13,6 +12,7 @@ function JeuxPage() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     const fetchGames = async () => {
       try {
         const games = await serviceRAWG.allGame(order, 10, search);

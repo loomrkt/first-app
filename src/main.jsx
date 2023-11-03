@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import ErrorPage from "./pages/error-page";
 import HomePage from "./pages/home-page";
 import JeuxPage from "./pages/jeux-page.jsx";
+import DetailPage from "./pages/detail-page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/jeux",
         element: <JeuxPage />,
+      },
+      {
+        path: "/jeux/:id",
+        element: <DetailPage />,
       },
     ],
   },

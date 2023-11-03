@@ -22,6 +22,8 @@ function HomePage() {
   }
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
     const fetchRecentGames = async () => {
       try {
         const games = await serviceRAWG.recentGame(nombreShow);
@@ -33,7 +35,7 @@ function HomePage() {
     };
     fetchRecentGames();
   }, [nombreShow]);
-  
+
   const listItems = recentGames.map((game) => (
     <Card key={game.id} data={game} />
   ));
@@ -62,7 +64,7 @@ function HomePage() {
             <div className="absolute inset-0 w-full h-full">
               <div className="flex flex-col justify-center items-center w-full h-full">
                 <Link
-                  to={"/"}
+                  to={"/jeux"}
                   className="inline-flex justify-center items-center gap-x-1.5 text-center text-sm bg-white text-gray-800 hover:text-gray-600 rounded-full transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-4 dark:bg-black dark:text-gray-200 dark:hover:text-gray-400 dark:focus:ring-offset-black"
                 >
                   <img
@@ -100,7 +102,7 @@ function HomePage() {
         </div>
         <div className="w-full flex items-center justify-center">
           <Link
-            to={"/"}
+            to={"/jeux"}
             className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800 mt-10"
           >
             Voir plus de jeux
