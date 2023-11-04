@@ -22,11 +22,6 @@ function HomePage() {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      isFirstRender.current = false;
-      return;
-    }
     const fetchRecentGames = async () => {
       try {
         const games = await serviceRAWG.recentGame(nombreShow);
@@ -36,7 +31,15 @@ function HomePage() {
         console.error(error);
       }
     };
-    fetchRecentGames();
+    if (isFirstRender.current) {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      isFirstRender.current = false;
+      fetchRecentGames();
+      return;
+    }
+    if (isFirstRender.current === false) {
+      fetchRecentGames();
+    }
   }, [nombreShow]);
 
   const listItems = recentGames.map((game) => (
