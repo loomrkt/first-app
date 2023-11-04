@@ -32,7 +32,11 @@ function JeuxPage() {
       return;
     }
 
-    if (isFirstRender.current == false && page > 1) {
+    // fetch lorsque l'ordre change ou la recherche ou la page change
+    if (
+      isFirstRender.current == false &&
+      (page > 1 || order != "" || search != "")
+    ) {
       fetchGames();
     }
   }, [order, search, page]);
