@@ -4,7 +4,7 @@ import BadgeList from "../components/badgeList";
 import Rating from "../components/rating";
 import DateFormat from "../components/dateFormat";
 import ServiceRAWG from "../services/RAGW";
-import HtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import DetailSkeleton from "../components/skeletons/detail-skeleton";
 const serviceRAWG = new ServiceRAWG();
 
@@ -104,7 +104,7 @@ function DetailPage() {
                   : `text-gray-500 dark:text-gray-400 line-clamp-none`
               }
             >
-              {HtmlParser(game.description)}
+              {parse(game.description)}
             </p>
             <button
               className="text-blue-500 hover:text-blue-700"
