@@ -5,8 +5,7 @@ import ServiceRAWG from "../services/RAGW";
 import Card from "../components/card";
 import CardSkeleton from "../components/skeletons/card-skeleton";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 const serviceRAWG = new ServiceRAWG();
 function HomePage() {
   const [recentGames, setRecentGames] = useState([]);
@@ -20,10 +19,14 @@ function HomePage() {
   } else if (isTablette) {
     nombreShow = 6;
   }
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-
+    if (isFirstRender.current) {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      isFirstRender.current = false;
+      return;
+    }
     const fetchRecentGames = async () => {
       try {
         const games = await serviceRAWG.recentGame(nombreShow);

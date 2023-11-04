@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import HSThemeAppearance from "./utils/HSThemeAppearance"; // Import HSThemeAppearance
 import FooterAll from "./components/footerAll";
 
+
 function App() {
   useEffect(() => {
     HSThemeAppearance();

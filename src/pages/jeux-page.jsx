@@ -2,7 +2,7 @@ import ServiceRAWG from "../services/RAGW";
 import Card from "../components/card";
 import CardSkeleton from "../components/skeletons/card-skeleton";
 import DropDownFiltre from "../components/dropDownFiltre";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 const serviceRAWG = new ServiceRAWG();
 
@@ -12,9 +12,16 @@ function JeuxPage() {
   const [order, setOrder] = useState("");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  // window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      isFirstRender.current = false;
+      return;
+    }
+
     const fetchGames = async () => {
       try {
         const newGames = await serviceRAWG.allGame(order, page, search);
@@ -24,11 +31,11 @@ function JeuxPage() {
         console.error(error);
       }
     };
+
     fetchGames();
   }, [order, search, page]);
 
   const listItems = Games.map((game) => <Card key={game.id} data={game} />);
-  console.log(listItems);
   return (
     <div className="container mx-auto px-4">
       {/* search component and filtre*/}
@@ -140,7 +147,6 @@ function JeuxPage() {
       <InfiniteScroll
         dataLength={Games.length}
         next={() => {
-          console.log("hello");
           setPage(page + 1);
         }}
         loader={

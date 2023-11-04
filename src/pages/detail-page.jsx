@@ -15,6 +15,7 @@ function DetailPage() {
   const [clamp, setClamp] = useState(true);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     const fetchGame = async () => {
       try {
         const game = await serviceRAWG.getDetailGame(id);
