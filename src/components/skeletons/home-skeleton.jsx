@@ -1,6 +1,6 @@
 function HomeSkeleton() {
   return (
-    <div className="mt-7">
+    <div className="mt-7 animate-pulse">
       <div className="flex flex-col items-center mx-5">
         <h2 className="h-7 px-2 w-full sm:w-2/4 bg-gray-200 rounded-md dark:bg-gray-700 mb-3"></h2>
         <h2 className="h-3 w-full sm:w-2/4 bg-gray-200 rounded-md dark:bg-gray-700 mb-3"></h2>

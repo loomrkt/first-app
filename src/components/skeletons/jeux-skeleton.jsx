@@ -2,7 +2,7 @@ import CardSkeleton from "./card-skeleton";
 
 function JeuxSkeleton() {
   return (
-    <div className="px-5 mt-10">
+    <div className="px-5 mt-10 animate-pulse">
       <div className="w-full  h-10 flex flex-col justify-center items-cente rounded-t-xl mb-3   ">
         <span className="w-full h-full block bg-gray-200 dark:bg-gray-700"></span>
       </div>

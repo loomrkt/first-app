@@ -1,6 +1,6 @@
 function DetailSkeleton() {
   return (
-    <>
+    <div className="animate-pulse">
       <div className="sm:flex items-stretch justify-center gap-x-10 block px-5 sm:px-10 mt-4">
         <div className="w-full sm:w-1/2  h-80 flex flex-col justify-center items-cente rounded-t-xl">
           <span className="w-full h-full block bg-gray-200 dark:bg-gray-700"></span>
@@ -51,7 +51,7 @@ function DetailSkeleton() {
           style={{ width: "55%" }}
         ></p>
       </div>
-    </>
+    </div>
   );
 }
 
