@@ -124,20 +124,9 @@ function Navbar() {
                   : "font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
               }
               aria-current={location.pathname == "/autre" ? "page" : undefined}
-              to={"/"}
+              to={"/apropos"}
             >
-              Work
-            </Link>
-            <Link
-              className={
-                location.pathname == "/autre"
-                  ? "font-medium text-blue-600"
-                  : "font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
-              }
-              aria-current={location.pathname == "/autre" ? "page" : undefined}
-              to={"/"}
-            >
-              Blog
+              Apropos
             </Link>
             <div className="hidden sm:inline-block ">
               <a

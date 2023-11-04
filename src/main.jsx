@@ -14,6 +14,7 @@ import JeuxSkeleton from "./components/skeletons/jeux-skeleton.jsx";
 const HomePage = lazy(() => import("./pages/home-page"));
 const JeuxPage = lazy(() => import("./pages/jeux-page.jsx"));
 const DetailPage = lazy(() => import("./pages/detail-page.jsx"));
+const AproposPage = lazy(() => import("./pages/apropos-page.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
         element: (
           <React.Suspense fallback={<DetailSkeleton />}>
             <DetailPage />
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "/apropos",
+        element: (
+          <React.Suspense fallback={<JeuxSkeleton />}>
+            <AproposPage />
           </React.Suspense>
         ),
       },
