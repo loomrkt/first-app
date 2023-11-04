@@ -16,12 +16,6 @@ function JeuxPage() {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      isFirstRender.current = false;
-      return;
-    }
-
     const fetchGames = async () => {
       try {
         const newGames = await serviceRAWG.allGame(order, page, search);
@@ -31,8 +25,16 @@ function JeuxPage() {
         console.error(error);
       }
     };
+    if (isFirstRender.current) {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      isFirstRender.current = false;
+      fetchGames();
+      return;
+    }
 
-    fetchGames();
+    if (isFirstRender.current == false && page > 1) {
+      fetchGames();
+    }
   }, [order, search, page]);
 
   const listItems = Games.map((game) => <Card key={game.id} data={game} />);

@@ -20,7 +20,7 @@ function HomePage() {
     nombreShow = 6;
   }
   const isFirstRender = useRef(true);
-
+  
   useEffect(() => {
     const fetchRecentGames = async () => {
       try {
@@ -36,9 +36,6 @@ function HomePage() {
       isFirstRender.current = false;
       fetchRecentGames();
       return;
-    }
-    if (isFirstRender.current === false) {
-      fetchRecentGames();
     }
   }, [nombreShow]);
 
